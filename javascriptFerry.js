@@ -2,7 +2,7 @@
 
 $(function() {
 
-	var tempoTravessia = 10;//120
+	var tempoTravessia = 2;//120
 	var tempoSaidaCarros = 20;//30
 	var tempoEntradaCarros = 10;//60
 	
@@ -29,7 +29,7 @@ $(function() {
 	}*/
 	var n = 0;
 	var intervalo;
-	var t = 0;
+	var t = 1;
 	var inicioC = 0;
 	var iniSai = 0;
 	var inicioT = 0;
@@ -54,7 +54,7 @@ $(function() {
 		// 3 saida carros
 	
 		intervalo = window.setInterval(function() {
-			//console.log(t);
+			console.log(t);
 			t++;
 			if(n == 0) {
 				divPai.append("<div class='carro' id='carro" + n + "' style='left: " + pos + "px;'></div>");
@@ -110,14 +110,49 @@ $(function() {
 				}
 			}
 			else if(status == 2 && (inicioT + tempoTravessia) > t) {
-				$("#balsa1").animate({
-					left: "440px",
-					top: "400px"
-				}, tempoTravessia*1000);
-				$("#balsa2").animate({
-					left: "440px",
-					top: "80px"
-				}, tempoTravessia*1000);
+				/*if($("#balsa1").css("top") == "80px") {
+					$("#balsa1").animate({
+						left: "440px",
+						top: "400px"
+					}, tempoTravessia*1000);
+					$("#balsa2").animate({
+						left: "440px",
+						top: "80px"
+					}, tempoTravessia*1000);
+				} else if ($("#balsa2").css("top") == "80px"){
+					$("#balsa1").animate({
+						left: "440px",
+						top: "80px"
+					}, tempoTravessia*1000);
+					$("#balsa2").animate({
+						left: "440px",
+						top: "400px"
+					}, tempoTravessia*1000);
+				}
+				
+				if(n == 1)
+				{		
+					$("#carro" + (n-1)).animate({
+						left: (480 + (50 * fila)) + "px"
+					}, vetor[n-1]*1000);
+					
+					fila++;
+				} else {
+					
+						if(parseInt($("#carro" + (n-2)).css("left"), 10)+((fila-1)*50) == aux + "px")
+						{
+							$("#carro" + (m)).animate({
+								left: aux + "px"
+							}, vetor[m]*1000);
+							
+							fila++;
+							aux = aux + 50;
+							console.log("maisa um");
+						}
+						console.log(" " + (parseInt($("#carro" + (n-2)).css("left"), 10)+(fila*50)) + " " + fila + " aux " + aux);
+					
+				}*/
+				
 			}
 			else if(status == 3 && (inicioT + tempoSaidaCarros) > t) {
 				while(y < tempoSaidaCarros/5){
@@ -139,26 +174,16 @@ $(function() {
 				});
 				
 				
-				if(n == 1)
+				if(fila == 0)
 				{		
 					$("#carro" + (n-1)).animate({
-						left: (480 + (50 * fila)) + "px"
+						left: "480px"
 					}, vetor[n-1]*1000);
 					
 					fila++;
 				} else {
-					if(fila == 0) {
-						if($("#carro" + (n-2)).css("left") == 480 + "px")
-						{
-							$("#carro" + (m)).animate({
-								left: (480 + (50 * fila)) + "px"
-							}, vetor[m]*1000);
-							
-							fila++;
-						}
-					} else {
-						console.log("   " + $("#carro" + (n-2)).css("left"));
-						if($("#carro" + (n-2)).css("left") == aux + "px")
+					
+						if(parseInt($("#carro" + (n-2)).css("left"), 10)+((fila-1)*50) == aux)
 						{
 							$("#carro" + (m)).animate({
 								left: aux + "px"
@@ -166,9 +191,9 @@ $(function() {
 							
 							fila++;
 							aux = aux + 50;
-							console.log("maisa um");
 						}
-					}
+						console.log(" " + (parseInt($("#carro" + (n-2)).css("left"), 10)+((fila-1)*50)) + " " + fila + " aux " + aux);
+					
 				}
 				
 				
@@ -183,6 +208,7 @@ $(function() {
 				else if(status == 2) {
 					status++;
 					tmp = tempoSaidaCarros;
+					console.log("assss");
 				}
 				else {
 					status = 1;
