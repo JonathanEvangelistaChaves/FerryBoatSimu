@@ -1,0 +1,60 @@
+.principal {
+	border: 1px solid black;
+	width: 1000px;
+	height: 600px;
+	position:relative;
+}
+
+#ruaCima {
+	background-color: black;
+	width: 1000px;
+	height: 80px;
+	top: 0px;
+	left: 0px;
+	position: absolute;
+}
+#ruaBaixo {
+	background-color: black;
+	width: 1000px;
+	height: 80px;
+	top: 520px;
+	left: 0px;
+	position: absolute;
+}
+#rio {
+	background-color: lightblue;
+	width: 1000px;
+	height: 440px;
+	top: 80px;
+	left: 0px;
+	position: absolute;
+	z-index: 1;
+}
+#balsa1 {
+	background-color: coral;
+	width: 120px;
+	height: 120px;
+	top: 80px;
+	left: 440px;
+	position: absolute;
+	z-index: 2;
+}
+#balsa2 {
+	background-color: coral;
+	width: 120px;
+	height: 120px;
+	top: 400px;
+	left: 440px;
+	position: absolute;
+	z-index: 2;
+}
+
+.carro {
+	background-color: green;
+	width: 40px;
+	height: 40px;
+	top: 540px;
+	left: 1000px;
+	position: absolute;
+	z-index: 3;
+}
